@@ -18,15 +18,19 @@
 </head>
 
 <body>
+<script defer src="script.js"></script>
 <header class="header">
     <div class="container header__container">
         <div class="header__content">
             <img class="logo" src="./assets/images/logo.svg"/>
-            <button class="highlight-button contact-us-button">Связаться с нами</button>
-            <select>
-                <option>1</option>
-                <option>2</option>
-            </select>
+            <a href="#feedbackForm" class="highlight-button contact-us-button">Связаться с нами</a>
+            <div class="custom-select">
+                <div data-select="ru" class="select-trigger"></div>
+                <ul class="options">
+                    <li data-value="eng"></li>
+                    <li data-value="usa"></li>
+                </ul>
+            </div>
         </div>
         <div class="header__main">
             <h1 class="header__title">
@@ -39,7 +43,7 @@
                 <span>компьютерных</span>
                 <span>технологий</span>
             </h2>
-            <button class="highlight-button contact-us-button--mobile">Связаться с нами</button>
+            <a href="#feedbackForm" class="highlight-button contact-us-button--mobile">Связаться с нами</a>
         </div>
         <div class="wrapper__scroll-btn">
             <a href="#main" id="scrollBtn" class="scroll-btn">
@@ -110,7 +114,8 @@
                     <p class="partner-subtitle">
                         осуществляет комплексную экспертную и консультационную поддержку в вопросах
                     </p>
-                    <button class="highlight-button contact-us-button">Связаться с консультантом</button>
+                    <a href="#feedbackForm" class="highlight-button partner-link contact-us-button">Связаться с
+                        консультантом</a>
 
                 </div>
                 <div class="partner-accordeon">
@@ -174,7 +179,8 @@
                         </li>
                     </ul>
                 </div>
-                <button class="highlight-button contact-us-button--mobile">Связаться с консультантом</button>
+                <a href="#feedbackForm" class="highlight-button partner-link contact-us-button--mobile">Связаться с
+                    консультантом</a>
             </div>
         </div>
     </section>
@@ -192,7 +198,7 @@
                             Разрабатываем мобильные приложения для Android, iOS, iPad. Помогаем опубликовать и пройти
                             проверки в магазинах.
                         </p>
-                        <button class="highlight-button">Подробнее</button>
+                        <a href="#" class="highlight-button development-link">Подробнее</a>
                     </li>
 
                     <li class="development-item">
@@ -202,7 +208,7 @@
                             Создаем гибридные десктоп приложения с использованием технологий Electron и React.js.
                             Обеспечиваем работу на системах: MacOS, Windows, Linux.
                         </p>
-                        <button class="highlight-button">Подробнее</button>
+                        <a class="highlight-button development-link">Подробнее</a>
                     </li>
 
                     <li class="development-item">
@@ -212,7 +218,7 @@
                             Делаем микросервисы, одностраничные и прогрессивные web-приложения. Наши веб-разработчики
                             специализируются на JavaScript, WebGL, HTML5, CSS и React JS.
                         </p>
-                        <button class="highlight-button">Подробнее</button>
+                        <a class="highlight-button development-link">Подробнее</a>
                     </li>
 
                     <li class="development-item">
@@ -222,7 +228,7 @@
                             Создаем и внедряем информационные и автоматизированные системы, программные средства
                             обучения и общего назначения для операционной системы Astra Linux.
                         </p>
-                        <button class="highlight-button">Подробнее</button>
+                        <a class="highlight-button development-link">Подробнее</a>
                     </li>
                 </ul>
             </div>
@@ -243,7 +249,16 @@
                             Осуществляет разработку современных программно-аппаратных комплексов для автоматизации
                             управления технологическими процессами.
                         </p>
-                        <a class="card-link" href="#">О команде</a>
+                        <a class="card-link" href="#">
+                            О команде
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.2802 5.96667L8.93355 10.3133C8.42021 10.8267 7.58021 10.8267 7.06688 10.3133L2.72021 5.96667"
+                                      stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+
+                        </a>
                     </div>
 
                     <div class="about-services__card">
@@ -256,7 +271,17 @@
                             Принимая во внимание мировой и отечественный опыт, создаем актуальные продукты для быстрого
                             внедрения в существующую инфраструктуру.
                         </p>
-                        <a class="card-link" href="#">Аппаратные и программные решения</a>
+                        <a class="card-link" href="#">
+                            Аппаратные и программные решения
+
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.2802 5.96667L8.93355 10.3133C8.42021 10.8267 7.58021 10.8267 7.06688 10.3133L2.72021 5.96667"
+                                      stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+
+                        </a>
                     </div>
 
                     <div class="about-services__card">
@@ -286,7 +311,7 @@
                         </p>
                     </div>
 
-                    <div class="about-feedback__form">
+                    <div id="feedbackForm" class="about-feedback__form">
                         <h4 class="form-title highlight-text">Свяжитесь с нами</h4>
                         <p class="form-subtitle">и расскажите о своих задачах!</p>
 
@@ -301,11 +326,11 @@
         </div>
     </section>
 
-    <div class="map">
-        <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ada7c5802ffae5764d08c2265001107ac2d1ff435584e89340d1bfc452edaa5bb&amp;source=constructor"
-                width="100%" height="400" frameborder="0"></iframe>
-    </div>
+    <!--    <div class="map">-->
+    <!--        <iframe-->
+    <!--                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ada7c5802ffae5764d08c2265001107ac2d1ff435584e89340d1bfc452edaa5bb&amp;source=constructor"-->
+    <!--                width="100%" height="400" frameborder="0"></iframe>-->
+    <!--    </div>-->
 </main>
 <footer class="footer">
     <div class="container">
@@ -317,40 +342,4 @@
 </footer>
 
 </body>
-
-<script>
-
-    //accordeon
-    const accordeon = document.querySelector('#accordeon')
-    const accordeonItems = accordeon.querySelectorAll('.accordeon-item');
-
-    accordeonItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (!item.classList.contains('active')) {
-                accordeonItems.forEach(item => item.classList.remove('active'))
-                item.classList.add('active');
-            }
-
-        })
-    })
-
-    //scroll
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            const targetId = this.getAttribute("href");
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                })
-            }
-
-        })
-    })
-
-</script>
 </html>
