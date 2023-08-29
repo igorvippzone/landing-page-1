@@ -69,43 +69,119 @@ if (ymaps) {
             center: [55.737826, 37.594504],
             zoom: 15,
             controls: [],
+
         });
+        console.log(myMap)
+        myMap.behaviors.disable('scrollZoom')
+        myMap.behaviors.disable('drag');
+        myMap.behaviors.disable('dblClickZoom');
 
-        var myPlacemark = new ymaps.Placemark([55.737826, 37.594504], {
-            iconContent: '119034, Россия, Москва, пер. Кропоткинский, 4',
-            // iconLayout: 'default#image',
-            iconImageHref: "./assets/icons/location.png",
-            iconImageSize: [30, 44],
-            iconImageOffset: [-15, -44]
+
+        const placemark = new ymaps.Placemark(myMap.getCenter(), {
+            balloonContentBody: `<div class="balloon-root">
+                <img src="./assets/icons/location.png"/>
+                <span>119034, Россия, Москва, пер. Кропоткинский, 4</span>
+                </div>`,
+        }, {
+
+            balloonCloseButton: false,
+            color: 'red'
         });
-        myMap.geoObjects.add(myPlacemark);
-        // myMap.balloon.open([55.737826, 37.594504], "119034, Россия, Москва, пер. Кропоткинский, 4", {
-        //     // Опция: не показываем кнопку закрытия.
-        //     closeButton: false
-        // });
-
-
+        myMap.geoObjects.add(placemark);
+        placemark.balloon.open();
 
     }
 }
 
 
 //form
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 const form = document.getElementById('feedbackForm');
+const submitBtn = form.querySelector('.feedback-button')
+const inputs = form.querySelectorAll('.custom-input')
+let isPushBtnSubmit = false;
+let isValid = true
+let wrapperEmail = null;
+let wrapperName = null;
+
+submitBtn.addEventListener('click', () => {
+    if (!isPushBtnSubmit) {
+        isPushBtnSubmit = true;
+    }
+})
+
+inputs.forEach(customInput => {
+    const input = customInput.querySelector('input')
+    const clearBtn = customInput.querySelector('.clear-input')
+
+    if (input.name === 'email') {
+        wrapperEmail = customInput
+    }
+    if (input.name === 'name') {
+        wrapperName = customInput
+    }
+
+    clearBtn.addEventListener('click', () => {
+        input.value = ''
+    })
+
+    input.addEventListener('input', (e) => {
+        if (input.name === 'email') {
+            if (isPushBtnSubmit) {
+                const isValid = validateEmail(e.target.value)
+                if (isValid) {
+                    customInput.classList.remove('error')
+                    submitBtn.disabled = false
+                } else {
+                    customInput.classList.add('error')
+                    submitBtn.disabled = true
+                }
+            }
+        }
+
+
+        if (e.target.value) {
+            clearBtn.classList.add('show')
+        } else {
+            clearBtn.classList.remove('show')
+        }
+
+    })
+
+})
 
 form.addEventListener('submit', function (event) {
-    // event.preventDefault();
-    //
-    // const data = new FormData(form);
-    // let userName;
-    // let userEmail;
-    // for (const [name, value] of data) {
-    //     if (name === 'name') {
-    //         userName = value
-    //     }
-    //     if (name === 'email') {
-    //         userEmail = value
-    //     }
-    //
-    // }
+    event.preventDefault();
+    console.log(event)
+    const data = new FormData(form);
+    let userName;
+    let userEmail;
+    for (const [name, value] of data) {
+        if (name === 'name') {
+            userName = value
+        }
+        if (name === 'email') {
+            if (validateEmail(value)) {
+                isValid = true
+                userEmail = value
+            } else {
+                isValid = false;
+                submitBtn.disabled = true
+                wrapperEmail.classList.add('error')
+
+            }
+        }
+    }
+
+    if (isValid) {
+        console.log('try')
+        window.location.href = `mailto:mail@example.org?body=name:${userName}, email:${userEmail}`;
+
+        wrapperEmail.querySelector('input').value = ''
+        wrapperName.querySelector('input').value = ''
+    }
 });

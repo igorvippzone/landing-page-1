@@ -326,20 +326,14 @@
                         <form id="feedbackForm"
                               class="feedback-form"
                               action="mailto:igorvippzone@gmail.com"
-                              method="post" id="email_form"
-                              action="http://postmail.invotes.com/send"
+                              method="post"
                         >
 
-
                         <div class="wrapper-input">
-                            <input type="hidden"
-                                   name="access_token"
-                                   value="b6e9s3vc1gk5agllxidftl8c"
-                            />
                             <div class="custom-input">
                                 <input id="name" name="name" type="text" placeholder="Ваше имя"/>
                                 <label for="name" class="label-inner">Ваше имя</label>
-                                <button class="clear-input" type="button">
+                                <button class="clear-input" type="button" tabindex="-1">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -351,10 +345,10 @@
                                 </button>
                             </div>
 
-                            <div class="custom-input error">
-                                <input id="email" name="email" type="email" placeholder="Email"/>
+                            <div class="custom-input">
+                                <input id="email" name="email" type="text" placeholder="Email"/>
                                 <label for="email" class="label-inner">Email</label>
-                                <button class="clear-input" type="button">
+                                <button class="clear-input" type="button" tabindex="-1">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -367,7 +361,7 @@
                             </div>
                         </div>
 
-                        <button class="highlight-button">Отправить</button>
+                        <button type="submit"  class="feedback-button highlight-button">Отправить</button>
                         </form>
                     </div>
                 </div>
