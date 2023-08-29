@@ -18,12 +18,18 @@
 </head>
 
 <body>
+<script defer src="https://api-maps.yandex.ru/2.1/?apikey=2f32391c-7d88-4464-b471-b7c90e867ce9&lang=ru_RU"
+        type="text/javascript">
+    <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 <script defer src="script.js"></script>
+
+
 <header class="header">
     <div class="container header__container">
         <div class="header__content">
             <img class="logo" src="./assets/images/logo.svg"/>
-            <a href="#feedbackForm" class="highlight-button contact-us-button">Связаться с нами</a>
+            <a href="#feedbackCard" class="highlight-button contact-us-button">Связаться с нами</a>
             <div class="custom-select">
                 <div data-select="ru" class="select-trigger"></div>
                 <ul class="options">
@@ -43,7 +49,7 @@
                 <span>компьютерных</span>
                 <span>технологий</span>
             </h2>
-            <a href="#feedbackForm" class="highlight-button contact-us-button--mobile">Связаться с нами</a>
+            <a href="#feedbackCard" class="highlight-button contact-us-button--mobile">Связаться с нами</a>
         </div>
         <div class="wrapper__scroll-btn">
             <a href="#main" id="scrollBtn" class="scroll-btn">
@@ -114,7 +120,7 @@
                     <p class="partner-subtitle">
                         осуществляет комплексную экспертную и консультационную поддержку в вопросах
                     </p>
-                    <a href="#feedbackForm" class="highlight-button partner-link contact-us-button">Связаться с
+                    <a href="#feedbackCard" class="highlight-button partner-link contact-us-button">Связаться с
                         консультантом</a>
 
                 </div>
@@ -179,13 +185,14 @@
                         </li>
                     </ul>
                 </div>
-                <a href="#feedbackForm" class="highlight-button partner-link contact-us-button--mobile">Связаться с
+                <a href="#feedbackCard" class="highlight-button partner-link contact-us-button--mobile">Связаться с
                     консультантом</a>
             </div>
         </div>
     </section>
 
     <section class="development">
+        <div class="development-bg"></div>
         <div class="container">
             <div class="development-content">
                 <h2 class="development-title">Разрабатываем <span class="highlight-text">IT</span></h2>
@@ -233,6 +240,7 @@
                 </ul>
             </div>
         </div>
+
     </section>
 
     <section class="about">
@@ -311,14 +319,55 @@
                         </p>
                     </div>
 
-                    <div id="feedbackForm" class="about-feedback__form">
-                        <h4 class="form-title highlight-text">Свяжитесь с нами</h4>
-                        <p class="form-subtitle">и расскажите о своих задачах!</p>
+                    <div id="feedbackCard" class="about-feedback__card">
+                        <h4 class="feedback-card__title highlight-text">Свяжитесь с нами</h4>
+                        <p class="feedback-card__subtitle">и расскажите о своих задачах!</p>
 
-                        <form>
-                            <input/>
-                            <input/>
-                            <button class="highlight-button">Отправить</button>
+                        <form id="feedbackForm"
+                              class="feedback-form"
+                              action="mailto:igorvippzone@gmail.com"
+                              method="post" id="email_form"
+                              action="http://postmail.invotes.com/send"
+                        >
+
+
+                        <div class="wrapper-input">
+                            <input type="hidden"
+                                   name="access_token"
+                                   value="b6e9s3vc1gk5agllxidftl8c"
+                            />
+                            <div class="custom-input">
+                                <input id="name" name="name" type="text" placeholder="Ваше имя"/>
+                                <label for="name" class="label-inner">Ваше имя</label>
+                                <button class="clear-input" type="button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.16992 14.83L14.8299 9.17004" stroke-width="1.5"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14.8299 14.83L9.16992 9.17004" stroke-width="1.5"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="custom-input error">
+                                <input id="email" name="email" type="email" placeholder="Email"/>
+                                <label for="email" class="label-inner">Email</label>
+                                <button class="clear-input" type="button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.16992 14.83L14.8299 9.17004" stroke-width="1.5"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14.8299 14.83L9.16992 9.17004" stroke-width="1.5"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="highlight-button">Отправить</button>
                         </form>
                     </div>
                 </div>
@@ -326,11 +375,14 @@
         </div>
     </section>
 
-    <!--    <div class="map">-->
-    <!--        <iframe-->
-    <!--                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ada7c5802ffae5764d08c2265001107ac2d1ff435584e89340d1bfc452edaa5bb&amp;source=constructor"-->
-    <!--                width="100%" height="400" frameborder="0"></iframe>-->
-    <!--    </div>-->
+    <!--        <div class="map">-->
+    <!--            <iframe-->
+    <!--                    src="https://yandex.ru/map-widget/v1/?um=constructor%3Ada7c5802ffae5764d08c2265001107ac2d1ff435584e89340d1bfc452edaa5bb&amp;source=constructor"-->
+    <!--                    width="100%" height="400" frameborder="0"></iframe>-->
+    <!--        </div>-->
+
+
+    <div id="map" style="width: 100%; height: 540px"></div>
 </main>
 <footer class="footer">
     <div class="container">
@@ -340,6 +392,9 @@
         </div>
     </div>
 </footer>
+
+</script>
+
 
 </body>
 </html>

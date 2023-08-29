@@ -1,4 +1,3 @@
-
 //accordeon
 const accordeon = document.querySelector('#accordeon')
 const accordeonItems = accordeon.querySelectorAll('.accordeon-item');
@@ -59,3 +58,54 @@ document.addEventListener("click", function (e) {
     }
 });
 
+
+if (ymaps) {
+
+    ymaps.ready(init);
+
+    function init() {
+
+        const myMap = new ymaps.Map('map', {
+            center: [55.737826, 37.594504],
+            zoom: 15,
+            controls: [],
+        });
+
+        var myPlacemark = new ymaps.Placemark([55.737826, 37.594504], {
+            iconContent: '119034, Россия, Москва, пер. Кропоткинский, 4',
+            // iconLayout: 'default#image',
+            iconImageHref: "./assets/icons/location.png",
+            iconImageSize: [30, 44],
+            iconImageOffset: [-15, -44]
+        });
+        myMap.geoObjects.add(myPlacemark);
+        // myMap.balloon.open([55.737826, 37.594504], "119034, Россия, Москва, пер. Кропоткинский, 4", {
+        //     // Опция: не показываем кнопку закрытия.
+        //     closeButton: false
+        // });
+
+
+
+    }
+}
+
+
+//form
+const form = document.getElementById('feedbackForm');
+
+form.addEventListener('submit', function (event) {
+    // event.preventDefault();
+    //
+    // const data = new FormData(form);
+    // let userName;
+    // let userEmail;
+    // for (const [name, value] of data) {
+    //     if (name === 'name') {
+    //         userName = value
+    //     }
+    //     if (name === 'email') {
+    //         userEmail = value
+    //     }
+    //
+    // }
+});
