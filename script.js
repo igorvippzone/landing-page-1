@@ -60,36 +60,17 @@ document.addEventListener("click", function (e) {
 
 
 if (ymaps) {
-
     ymaps.ready(init);
 
     function init() {
-
         const myMap = new ymaps.Map('map', {
             center: [55.737826, 37.594504],
             zoom: 15,
             controls: [],
-
         });
-        console.log(myMap)
         myMap.behaviors.disable('scrollZoom')
         myMap.behaviors.disable('drag');
         myMap.behaviors.disable('dblClickZoom');
-
-
-        const placemark = new ymaps.Placemark(myMap.getCenter(), {
-            balloonContentBody: `<div class="balloon-root">
-                <img src="./assets/icons/location.png"/>
-                <span>119034, Россия, Москва, пер. Кропоткинский, 4</span>
-                </div>`,
-        }, {
-
-            balloonCloseButton: false,
-            color: 'red'
-        });
-        myMap.geoObjects.add(placemark);
-        placemark.balloon.open();
-
     }
 }
 
@@ -127,6 +108,7 @@ inputs.forEach(customInput => {
 
     clearBtn.addEventListener('click', () => {
         input.value = ''
+        clearBtn.classList.remove('show')
     })
 
     input.addEventListener('input', (e) => {
@@ -183,5 +165,7 @@ form.addEventListener('submit', function (event) {
 
         wrapperEmail.querySelector('input').value = ''
         wrapperName.querySelector('input').value = ''
+        wrapperEmail.querySelector('.clear-input').classList.remove('show')
+        wrapperName.querySelector('.clear-input').classList.remove('show')
     }
 });
